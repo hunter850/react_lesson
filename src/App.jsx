@@ -1,7 +1,7 @@
-import JsxDemo from "./0711/JsxDemo";
+import MapPractice from "./0711/MapPractice";
 
 function App() {
-    return <JsxDemo />;
+    return <MapPractice />;
 }
 
 export default App;
