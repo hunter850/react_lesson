@@ -1,7 +1,7 @@
-import MapPractice from "./0711/MapPractice";
+import BootstrapNav from "./components/BootstrapNav";
 
 function App() {
-    return <MapPractice />;
+    return <BootstrapNav />;
 }
 
 export default App;
