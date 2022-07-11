@@ -1,7 +1,7 @@
-import StatePractice from "./0711/StatePractice";
+import ObjectArray from "./0711/ObjectArray";
 
 function App() {
-    return <StatePractice />;
+    return <ObjectArray />;
 }
 
 export default App;
