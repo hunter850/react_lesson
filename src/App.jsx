@@ -1,7 +1,7 @@
-import BootstrapNav from "./components/BootstrapNav";
+import StatePractice from "./0711/StatePractice";
 
 function App() {
-    return <BootstrapNav />;
+    return <StatePractice />;
 }
 
 export default App;
