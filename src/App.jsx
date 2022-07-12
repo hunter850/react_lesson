@@ -1,7 +1,7 @@
-import ObjectArray from "./0711/ObjectArray";
+import PropsParent from "./0712/PropsParent";
 
 function App() {
-    return <ObjectArray />;
+    return <PropsParent />;
 }
 
 export default App;
