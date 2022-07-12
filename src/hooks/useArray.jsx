@@ -7,60 +7,120 @@ const useArray = (defaultValue) => {
     const obj = {
         value: array,
         cpush: function (item) {
-            setArray((pre) => [...pre, item]);
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                tempArray.push(item);
+                setArray(tempArray);
+            } catch {
+                setArray((pre) => [...pre, item]);
+            }
             return this;
         },
         cpop: function () {
-            setArray((pre) => {
-                const tempArray = [...pre];
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
                 tempArray.pop();
-                return tempArray;
-            });
+                setArray(tempArray);
+            } catch {
+                setArray((pre) => {
+                    const tempArray = [...pre];
+                    tempArray.pop();
+                    return tempArray;
+                });
+            }
             return this;
         },
         cunshift: function (item) {
-            setArray((pre) => [item, ...pre]);
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                tempArray.unshift(item);
+                setArray(tempArray);
+            } catch {
+                setArray((pre) => [item, ...pre]);
+            }
             return this;
         },
         cshift: function () {
-            setArray((pre) => {
-                const tempArray = [...pre];
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
                 tempArray.shift();
-                return tempArray;
-            });
+                setArray(tempArray);
+            } catch {
+                setArray((pre) => {
+                    const tempArray = [...pre];
+                    tempArray.shift();
+                    return tempArray;
+                });
+            }
             return this;
         },
         cslice: function (begin, end) {
-            if (end) {
-                return this.value.slice(begin, end);
-            } else {
-                return this.value.slice(begin);
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                if (end) {
+                    return tempArray.slice(begin, end);
+                } else {
+                    return tempArray.slice(begin);
+                }
+            } catch {
+                if (end) {
+                    return this.value.slice(begin, end);
+                } else {
+                    return this.value.slice(begin);
+                }
             }
         },
         clength: function () {
-            return this.value.length;
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                return tempArray.length;
+            } catch {
+                return this.value.length;
+            }
         },
         csplice: function (start, deleteCount, ...items) {
-            if (items.length === 0) {
-                setArray((pre) => {
-                    const tempArray = [...pre];
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                if (items.length === 0) {
                     tempArray.splice(start, deleteCount);
-                    return tempArray;
-                });
-            } else {
-                setArray((pre) => {
-                    const tempArray = [...pre];
+                    setArray(tempArray);
+                } else {
                     tempArray.splice(start, deleteCount, ...items);
-                    return tempArray;
-                });
+                    setArray(tempArray);
+                }
+            } catch {
+                if (items.length === 0) {
+                    setArray((pre) => {
+                        const tempArray = [...pre];
+                        tempArray.splice(start, deleteCount);
+                        return tempArray;
+                    });
+                } else {
+                    setArray((pre) => {
+                        const tempArray = [...pre];
+                        tempArray.splice(start, deleteCount, ...items);
+                        return tempArray;
+                    });
+                }
             }
             return this;
         },
         cmap: function (callback) {
-            return this.value.map(callback);
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                return tempArray.map(callback);
+            } catch {
+                return this.value.map(callback);
+            }
         },
         creverse: function () {
-            setArray((pre) => [...pre].reverse());
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                tempArray.reverse();
+                setArray(tempArray);
+            } catch {
+                setArray((pre) => [...pre].reverse());
+            }
             return this;
         },
         cclear: function () {
@@ -72,7 +132,29 @@ const useArray = (defaultValue) => {
             return this;
         },
         cfilter: function (callback) {
-            return this.value.filter(callback);
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                return tempArray.filter(callback);
+            } catch {
+                return this.value.filter(callback);
+            }
+        },
+        cselect: function (callback) {
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                setArray(tempArray.filter(callback));
+            } catch {
+                console.log("error array did not change.");
+            }
+            return this;
+        },
+        cfindIndex: function (callback) {
+            try {
+                const tempArray = JSON.parse(JSON.stringify(this.value));
+                return tempArray.findIndex(callback);
+            } catch {
+                return this.value.findIndex(callback);
+            }
         },
     };
     return obj;
