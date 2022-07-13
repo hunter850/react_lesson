@@ -31,7 +31,8 @@ function ProductItem(props) {
     const deleteHandler = useCallback(
         (id) => {
             setRawDatas((pre) => {
-                const tempArray = JSON.parse(JSON.stringify(pre));
+                // const tempArray = JSON.parse(JSON.stringify(pre));
+                const tempArray = pre.map((data) => ({ ...data }));
                 return tempArray.filter((data) => data.id !== id);
             });
         },
