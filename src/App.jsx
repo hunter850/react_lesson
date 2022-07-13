@@ -1,7 +1,7 @@
-import OrderPage from "./0713/OrderPage";
+import ControledForm from "./0713/ControledForm";
 
 function App() {
-    return <OrderPage />;
+    return <ControledForm />;
 }
 
 export default App;
