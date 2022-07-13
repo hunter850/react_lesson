@@ -1,7 +1,7 @@
-import PropsParent from "./0712/PropsParent";
+import OrderPage from "./0713/OrderPage";
 
 function App() {
-    return <PropsParent />;
+    return <OrderPage />;
 }
 
 export default App;
