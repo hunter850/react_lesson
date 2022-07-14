@@ -1,9 +1,11 @@
-import { Fragment, useState, useMemo } from "react";
+import { Fragment, useState, useMemo, useCallback } from "react";
 
 function ControledForm() {
     const [textInput, setTextInput] = useState("");
     const [textareaInput, setTextareaInput] = useState("");
     const [gender, setGender] = useState(false);
+    const [favoriteFruit, setFavoriteFruit] = useState("");
+    const [checkBoxArray, setCheckBoxArray] = useState([]);
     const styles = useMemo(() => {
         return {
             formWrap: {
@@ -16,12 +18,26 @@ function ControledForm() {
             radioStyle: {
                 marginRight: "12px",
                 cursor: "pointer",
+                userSelect: "none",
             },
         };
     }, []);
     const radioArray = useMemo(() => {
         return ["男", "女", "不填寫"];
     }, []);
+    const seletArray = useMemo(() => {
+        return ["蘋果", "香蕉", "鳳梨", "水蜜桃", "芭樂"];
+    }, []);
+    const changeHandler = useCallback(
+        (fruit) => {
+            if (checkBoxArray.includes(fruit)) {
+                setCheckBoxArray((pre) => pre.filter((item) => item !== fruit));
+            } else {
+                setCheckBoxArray((pre) => [...pre, fruit]);
+            }
+        },
+        [checkBoxArray]
+    );
     return (
         <Fragment>
             <form style={styles.formWrap}>
@@ -45,6 +61,8 @@ function ControledForm() {
                 />
                 <br />
                 <br />
+                <label htmlFor="">性別</label>
+                <br />
                 {radioArray.map((item, index) => (
                     <Fragment key={item}>
                         <input
@@ -59,6 +77,39 @@ function ControledForm() {
                             style={styles.radioStyle}
                         >
                             {item}
+                        </label>
+                    </Fragment>
+                ))}
+                <br />
+                <br />
+                <label htmlFor="favorite_fruit">喜愛的水果</label>
+                <br />
+                <select
+                    value={favoriteFruit}
+                    onChange={(e) => setFavoriteFruit(e.target.value)}
+                    id="favorite_fruit"
+                >
+                    <option value="" disabled>
+                        -- 請選擇 --
+                    </option>
+                    {seletArray.map((fruit) => (
+                        <option key={fruit} value={fruit}>
+                            {fruit}
+                        </option>
+                    ))}
+                </select>
+                <br />
+                <br />
+                {seletArray.map((fruit) => (
+                    <Fragment key={fruit}>
+                        <input
+                            type="checkbox"
+                            checked={checkBoxArray.includes(fruit)}
+                            onChange={() => changeHandler(fruit)}
+                            id={fruit}
+                        />
+                        <label htmlFor={fruit} style={styles.radioStyle}>
+                            {fruit}
                         </label>
                     </Fragment>
                 ))}

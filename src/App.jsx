@@ -1,7 +1,7 @@
-import ControledForm from "./0714/ControledForm";
+import DatePractice from "./0714/DatePractice";
 
 function App() {
-    return <ControledForm />;
+    return <DatePractice />;
 }
 
 export default App;
