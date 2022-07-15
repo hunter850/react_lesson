@@ -12,7 +12,7 @@ function MultipleInput() {
     const radioArray = useMemo(() => {
         return ["男", "女", "不填寫"];
     }, []);
-    const seletArray = useMemo(() => {
+    const selectArray = useMemo(() => {
         return ["蘋果", "香蕉", "鳳梨", "水蜜桃", "芭樂"];
     }, []);
     const styles = useMemo(() => {
@@ -124,7 +124,7 @@ function MultipleInput() {
                     <option value="" disabled>
                         -- 請選擇 --
                     </option>
-                    {seletArray.map((fruit) => (
+                    {selectArray.map((fruit) => (
                         <option key={fruit} value={fruit}>
                             {fruit}
                         </option>
@@ -132,7 +132,7 @@ function MultipleInput() {
                 </select>
                 <br />
                 <br />
-                {seletArray.map((fruit) => (
+                {selectArray.map((fruit) => (
                     <Fragment key={fruit}>
                         <input
                             type="checkbox"
