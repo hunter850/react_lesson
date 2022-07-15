@@ -1,7 +1,6 @@
-import DatePractice from "./0714/DatePractice";
-
+import MultipleInput from "./0715/MultipleInput";
 function App() {
-    return <DatePractice />;
+    return <MultipleInput />;
 }
 
 export default App;
