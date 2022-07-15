@@ -1,6 +1,6 @@
-import MultipleInput from "./0715/MultipleInput";
+import RefForm from "./0715/RefForm";
 function App() {
-    return <MultipleInput />;
+    return <RefForm />;
 }
 
 export default App;
