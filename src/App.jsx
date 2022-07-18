@@ -1,6 +1,6 @@
-import RefForm from "./0715/RefForm";
+import TryFetch from "./0718/TryFetch";
 function App() {
-    return <RefForm />;
+    return <TryFetch />;
 }
 
 export default App;
