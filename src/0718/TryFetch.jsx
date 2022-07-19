@@ -32,7 +32,7 @@ function TryFetch() {
             </div>
         </Fragment>
     );
-    
+
     const dataEl = (
         <Fragment>
             <button className="btn btn-primary">primary</button>

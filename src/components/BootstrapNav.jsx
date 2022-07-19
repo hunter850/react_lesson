@@ -7,6 +7,7 @@ import {
     Form,
     Button,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function BootstrapNav() {
     return (
@@ -17,7 +18,18 @@ function BootstrapNav() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Link to="/" className="me-2">
+                                Home
+                            </Link>
+                            <Link to="/product" className="me-2">
+                                Product
+                            </Link>
+                            <Link to="/about" className="me-2">
+                                About
+                            </Link>
+                            <Link to="/login">Login</Link>
+                            {/* <Nav.Link onClick={(e) => e.preventDefault()}>
+                            </Nav.Link> */}
                             <Nav.Link href="#link">Link</Nav.Link>
                             <NavDropdown
                                 title="Dropdown"
