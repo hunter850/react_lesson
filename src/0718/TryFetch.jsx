@@ -14,7 +14,7 @@ function TryFetch() {
             setUsers(response.data);
             timeout(() => {
                 setIsLoading(false);
-            }, 2000);
+            }, 500);
         }
         getData();
     }, [timeout]);
@@ -32,9 +32,11 @@ function TryFetch() {
             </div>
         </Fragment>
     );
-
+    
     const dataEl = (
         <Fragment>
+            <button className="btn btn-primary">primary</button>
+            <button className="btn btn-secondary">secondary</button>
             <table border="1">
                 <tbody>
                     {users.map((user) => (
